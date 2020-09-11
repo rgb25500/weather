@@ -16,6 +16,8 @@ const weatherOptions = {
   Rain: {
     iconName: "weather-rainy",
     gradient: ["#00C6FB", "#005BEA"],
+    title: "Rainy",
+    subtitle: "take your umbrella!",
   },
   Snow: {
     iconName: "weather-snowy",
@@ -62,7 +64,12 @@ export default function Weather({ temp, condition }) {
         />
         <Text style={styles.temp}>{temp}˚</Text>
       </View>
-      <View style={styles.halfContainer} />
+      <View style={{ ...styles.halfContainer, ...styles.textContainer }}>
+        <Text style={styles.title}>{weatherOptions[condition].title}</Text>
+        <Text style={styles.subtitle}>
+          {weatherOptions[condition].subtitle}
+        </Text>
+      </View>
     </LinearGradient>
   );
 }
@@ -98,5 +105,20 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  title: {
+    color: "white",
+    fontSize: 45,
+    fontWeight: "300",
+    marginBottom: 10,
+  },
+  subtitle: {
+    color: "white",
+    fontWeight: "600",
+    fontSize: 20,
+  },
+  textContainer: {
+    paddingHorizontal: 20,
+    alignItems: "flex-start",
   },
 });
